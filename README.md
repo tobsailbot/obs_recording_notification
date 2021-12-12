@@ -9,7 +9,7 @@ A popup window that notifies you when OBS is recording
             This script was made using Python and tkinter library.
 ### Installation:
 - Download the python-3.6.8-embed-amd64.rar that includes a Python compatible package with the necessary libraries.
-- Open OBS end go to - Tools - Scripts.
+- Open OBS and go to - Tools - Scripts.
 - Configure the Python installation path by selecting the extracted folder.
 - Go to Scripts tab, click the + button and add the "obs_recording_notification.py" file.
 - Restart OBS and hit Start Recording. 
