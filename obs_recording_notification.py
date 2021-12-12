@@ -79,8 +79,6 @@ def frontend_event_handler(data):
         window.destroy()
         return True
 
-# def script_update(settings):
-#     Data.OutputDir = obs.obs_data_get_string(settings,"outputdir")
 
 
 def script_description():
