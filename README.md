@@ -2,6 +2,8 @@
 
 A popup window that notifies you when OBS is recording
 
+![alt text](https://raw.githubusercontent.com/tobsailbot/obs_recording_notification/main/Instructions/recording.PNG)
+
 ### How it works:
             When the 'Start recording' button is pressed a popup window appears
             on top of the screen showing you that OBS is recording,
@@ -17,7 +19,7 @@ A popup window that notifies you when OBS is recording
 
 ![alt text](https://raw.githubusercontent.com/tobsailbot/obs_recording_notification/main/Instructions/python%20select.PNG)
 
-![alt text](https://raw.githubusercontent.com/tobsailbot/obs_recording_notification/main/Instructions/recording.PNG)
+
 
 ## ATTENTION: 
 If you find any kind of bug I suggest you reset the program and kill the OBS process from the task manager. Only tested on Windows 
