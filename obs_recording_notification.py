@@ -20,11 +20,6 @@ window = None
 def ClickRelease(event):
     resolutionX = window.winfo_screenwidth()
     resolutionY = window.winfo_screenheight()
-    print(resolutionX)
-    print(resolutionY)
-    print(window.winfo_x())
-    print(window.winfo_y())
-    print('----------')
     global x, y
     if window.winfo_y() < 0:
         window.geometry("+%s+%s" % (x, 0))
