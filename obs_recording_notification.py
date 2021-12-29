@@ -18,10 +18,10 @@ y = 0
 window = None
 
 def ClickRelease(event):
-    resolutionX = window.winfo_screenwidth()
+    resolutionX = window.winfo_screenwidth() # gets the actual screen resolution
     resolutionY = window.winfo_screenheight()
     global x, y
-    if window.winfo_y() < 0:
+    if window.winfo_y() < 0:  # if the current window position is below 0 , then move the window 
         window.geometry("+%s+%s" % (x, 0))
     if window.winfo_y() > (resolutionY-35):
         window.geometry("+%s+%s" % (x,(resolutionY-35)))
