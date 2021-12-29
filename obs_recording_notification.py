@@ -9,7 +9,32 @@ from tkinter import *
 lastClickX = 0
 lastClickY = 0
 
+clickReleaseX = 0
+clickReleaseY = 0
+
+x = 0
+y = 0
+
 window = None
+
+def ClickRelease(event):
+    resolutionX = window.winfo_screenwidth()
+    resolutionY = window.winfo_screenheight()
+    print(resolutionX)
+    print(resolutionY)
+    print(window.winfo_x())
+    print(window.winfo_y())
+    print('----------')
+    global x, y
+    if window.winfo_y() < 0:
+        window.geometry("+%s+%s" % (x, 0))
+    if window.winfo_y() > (resolutionY-35):
+        window.geometry("+%s+%s" % (x,(resolutionY-35)))
+    if window.winfo_x() < 0:
+        window.geometry("+%s+%s" % (0, y))
+    if window.winfo_x() > (resolutionX-140):
+        window.geometry("+%s+%s" % ((resolutionX-140), y))
+
 
 def SaveLastClickPos(event):
     global lastClickX, lastClickY
@@ -17,7 +42,9 @@ def SaveLastClickPos(event):
     lastClickY = event.y
 
 
+
 def Dragging(event):
+    global x, y
     x, y = event.x - lastClickX + window.winfo_x(), event.y - lastClickY + window.winfo_y()
     window.geometry("+%s+%s" % (x , y))
 
@@ -56,11 +83,13 @@ def StartWindow():
 
         window.attributes('-alpha', win_opacity)
         window.attributes('-topmost', True)
+        window.bind('<ButtonRelease-1>', ClickRelease)
+
         window.bind('<Button-1>', SaveLastClickPos)  # click to drag and drop window
         window.bind('<B1-Motion>', Dragging)
 
-        window.mainloop()
 
+        window.mainloop()
 
 
 
