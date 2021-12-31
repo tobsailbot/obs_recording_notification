@@ -2,8 +2,6 @@
 
 A popup window that notifies you when OBS is recording
 
-![alt text](https://raw.githubusercontent.com/tobsailbot/obs_recording_notification/main/Instructions/recording.PNG)
-
 ![alt text](https://raw.githubusercontent.com/tobsailbot/obs_recording_notification/main/Instructions/rec%20timer.PNG)
 
 ### How it works:
