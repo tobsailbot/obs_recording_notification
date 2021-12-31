@@ -16,7 +16,6 @@ y = 0
 
 window = None
 
-
 timer_enable = True
 #----------------------------------------------------------------------------------------
 
@@ -86,16 +85,11 @@ def update():
 #----------------------------------------------------------------------------------------
 
 # snap window to borders function
-
 def ClickRelease(event):
     resolutionX = window.winfo_screenwidth() # gets the actual screen resolution
     resolutionY = window.winfo_screenheight()
     global x, y
-
     if window.winfo_y() < 0:  # if the current window position is below 0 , then move the window
-=======
-    if window.winfo_y() < 0:  # if the current window position is below 0 , then move the window 
-
         window.geometry("+%s+%s" % (x, 0))
     if window.winfo_y() > (resolutionY-35):
         window.geometry("+%s+%s" % (x,(resolutionY-35)))
@@ -104,16 +98,11 @@ def ClickRelease(event):
     if window.winfo_x() > (resolutionX-140):
         window.geometry("+%s+%s" % ((resolutionX-140), y))
 
-
 # left click window dragging function
-=======
-
-
 def SaveLastClickPos(event):
     global lastClickX, lastClickY
     lastClickX = event.x
     lastClickY = event.y
-
 
 
 def Dragging(event):
@@ -171,12 +160,8 @@ def StartWindow():
 
 
 
-
         window.mainloop()
-=======
 
-
-        window.mainloop()
 
 
 
