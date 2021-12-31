@@ -5,7 +5,7 @@ A popup window that notifies you when OBS is recording
 ![alt text](https://raw.githubusercontent.com/tobsailbot/obs_recording_notification/main/Instructions/rec%20timer.PNG)
 
 ### How it works:
-When the 'Start recording' button is pressed a popup window appearson top of the screen showing you that OBS is recording
+When the 'Start recording' button is pressed a popup window appears on top of the screen showing you that OBS is recording
 You can left-click and drag the window to position it.
 This script was made using Python and tkinter library.
 
