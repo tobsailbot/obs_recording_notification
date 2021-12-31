@@ -186,6 +186,14 @@ def frontend_event_handler(data):
         except Exception:
             pass
 
+    if data == obs.OBS_FRONTEND_EVENT_RECORDING_PAUSED:
+        print('REC paused..')
+        pause()
+
+    if data == obs.OBS_FRONTEND_EVENT_RECORDING_UNPAUSED:
+        print('REC unpaused..')
+        start()
+
     if data == obs.OBS_FRONTEND_EVENT_EXIT:
         window.destroy()
 
