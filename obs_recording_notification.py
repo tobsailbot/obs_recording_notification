@@ -135,7 +135,8 @@ def StartWindow():
         frame.config(bg="grey")
 
         canvas = Canvas(frame,height='25',width='25', bg='grey',highlightthickness=0) # canvas for REC button
-        canvas.create_oval(20, 20, 3, 3, fill='red')
+        canvas.create_oval(21, 21, 2, 3, outline='grey45', fill='grey40')
+        canvas.create_oval(20, 20, 4, 5, fill='red', outline='' )
         canvas.grid(row=0, column=0)
 
         label = Label(frame,text="OBS is recording...")
