@@ -17,6 +17,8 @@ y = 0
 window = None
 
 timer_enable = True
+
+is_paused = False
 #----------------------------------------------------------------------------------------
 
 # ***** VARIABLES *****
@@ -139,7 +141,7 @@ def StartWindow():
         canvas.create_oval(20, 20, 4, 5, fill='red', outline='' )
         canvas.grid(row=0, column=0)
 
-        label = Label(frame,text="OBS is recording...")
+        label = Label(frame,text="OBS is recording")
         label.grid(row=0,column=1)
         label.config(bg="grey",fg="white")
 
@@ -159,6 +161,43 @@ def StartWindow():
         window.bind('<Button-1>', SaveLastClickPos)  # click to drag and drop window
         window.bind('<B1-Motion>', Dragging)
 
+        # stop the recording
+        def stop_rec():
+            obs.obs_frontend_recording_stop()
+
+        # pause the recording
+        def pause_rec():
+            global is_paused
+            if is_paused:
+                is_paused  = False
+                popup_menu.entryconfig(0, label='Pause Recording')
+                obs.obs_frontend_recording_pause(False)
+                label.config(text='OBS is recording')
+                canvas.delete("all")
+                canvas.create_oval(21, 21, 2, 3, outline='grey45', fill='grey40')
+                canvas.create_oval(20, 20, 4, 5, fill='red', outline='' )
+
+            elif not is_paused:
+                is_paused = True
+                popup_menu.entryconfig(0, label='Unpause Recording')
+                obs.obs_frontend_recording_pause(True)
+                label.config(text='Recording paused')
+                canvas.delete("all")
+                canvas.create_rectangle(10, 20, 5, 5, fill='grey20', outline='grey30')
+                canvas.create_rectangle(20, 20, 15, 5, fill='grey20', outline='grey30')
+                
+            
+        
+        # open the popup menu
+        def open_menu(e):
+            popup_menu.tk_popup(e.x_root, e.y_root)
+
+        # adds a right-click popup menu to the main frame
+        popup_menu = Menu(frame, tearoff=False)
+        popup_menu.add_command(label='Pause Recording', command=pause_rec)
+        popup_menu.add_separator()
+        popup_menu.add_command(label='Stop Recording', command=stop_rec)
+        window.bind('<Button-3>', open_menu)
 
 
         window.mainloop()
@@ -175,6 +214,8 @@ class Data:
 
 # this function responds to events inside OBS
 def frontend_event_handler(data):
+    global is_paused
+
     if data == obs.OBS_FRONTEND_EVENT_RECORDING_STARTED:
         print('REC start')
         StartWindow()
@@ -189,10 +230,12 @@ def frontend_event_handler(data):
 
     if data == obs.OBS_FRONTEND_EVENT_RECORDING_PAUSED:
         print('REC paused..')
+        is_paused = True
         pause()
 
     if data == obs.OBS_FRONTEND_EVENT_RECORDING_UNPAUSED:
         print('REC unpaused..')
+        is_paused = False
         start()
 
     if data == obs.OBS_FRONTEND_EVENT_EXIT:
